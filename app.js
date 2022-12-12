@@ -1,14 +1,17 @@
-//Select 13 colors - Primary, Secondary and Terciary Colors
-let colors = [ 'red', 'green', 'blue', 'orange', 'purple', 'yellow', 'silver', 'violet', 'pink', 'gold', 'navy', 'cyan', 'magenta'];
 
-//to change the  canvas background when the button is clicked
+// Change the canvas background when the button is clicked
 let button = document.getElementById('button');
 
 button.addEventListener('click', function(){
-    //choose a random number between 0 - 6
-    let index = parseInt((Math.random()*colors.length)+1);
-    //make the canvas
+    // Choose a random color
+    let color = getRandomHex();
+    // Get the canvas
     let canvas = document.getElementById('canvas');
 
-    canvas.style.background = `${colors[index]}`
+    canvas.style.background = color;
 })
+
+// Functions
+ function getRandomHex() {
+    return '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+ }
